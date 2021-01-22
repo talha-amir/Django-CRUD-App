@@ -1,0 +1,52 @@
+{% extends 'CRUD/base.html' %}
+
+
+{% block main %}
+
+<!-- <h1>Student Table  </h1> -->
+<table class="table table-borderless">
+    <thead>
+    <tr>
+        <td>Roll Number</td>
+        <td>Name</td>
+        <td>Section</td>
+        <td>Department</td>
+        <td>Actions</td>
+        <td> 
+            <a name="" id="" class="btn btn-primary" href="{% url 'student_form' %} " role="button">Add Student
+            <i class="fa fa-plus-circle" aria-hidden="true"></i>
+            </a> 
+        </td>
+
+    </tr>
+</thead>
+<tbody>
+    {% for student in student_data %}
+    <tr>
+        <td> {{student.roll_number}}</td>
+        <td>{{student.name}}</td>
+        <td>{{student.section}}</td>
+        <td>{{student.department}}</td>
+        <td>
+            <a href="{% url 'student_update' student.roll_number %}" class="btn text-secondary px-8 float-left ">
+                <i class="fa fa-edit fa-lg"></i>
+            </a>
+            <form action="{% url 'student_delete' student.roll_number %}" method="post" class="d-inline px-8 float-left">
+                {% csrf_token %}
+                <button type="submit"  class="btn text-secondary px-8 float-right" >
+                    <i class="fa fa-trash fa-lg"></i> 
+                </button>
+            </form>
+        </td>
+    </tr>
+        
+    {% endfor %}
+        
+
+
+</tbody>
+
+
+</table>    
+{% endblock main %}
+    

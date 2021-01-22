@@ -1,0 +1,49 @@
+{% extends 'CRUD/base.html' %}
+
+{% block main %}
+
+<style>
+    #id_roll_number,#id_name,#id_section,#id_department {width: 100%;}
+</style>
+
+<h1>Student Forms</h1>
+
+{% load crispy_forms_tags %}
+<form action="" method="post" autocomplete="on">
+
+    {% csrf_token %}
+    <!-- {{form|crispy}} -->
+    {{form.roll_number|as_crispy_field}}
+    {{form.name|as_crispy_field}}
+    <div class="row">
+        <div class="col-md-4">
+            {{form.section|as_crispy_field}}
+        </div>
+        <div class="col-md-8">
+            {{form.department|as_crispy_field}}
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <button type="submit" class="btn btn-success btn-block btn-lg mt-5">
+                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+    
+                Submit
+            </button>
+        </div>
+        <div class="col-md-4">
+            <a type="button" href='{% url "student_display" %}' class="btn btn-secondary btn-lg mt-5">
+                <!-- <i class="fa fa-stream"></i> -->
+                <i class="fa fa-list" aria-hidden="true"></i>
+                 Student Data
+
+            </a>
+        </div>
+    </div>
+</form>
+
+
+    
+{% endblock main %}
+    
