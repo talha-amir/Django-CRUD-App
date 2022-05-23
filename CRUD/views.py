@@ -7,9 +7,7 @@ from .models import Student
 # Create your views here.
 def index(request):
     print("Request Object :" , request.content_type)
-    # return HttpResponse("<h1>Hello World</h1>")
-    response = redirect("/display")
-    return response
+    return redirect("/display")
 
 def student_dispay(request):
     context = {'student_data':Student.objects.all()}
